@@ -1,6 +1,6 @@
 django>=1.8.0
-django-model-utils=>2.4
-django_markupfield=>1.3.5
-markdown=>2.6.5
+django-model-utils>=2.4
+django_markupfield>=1.3.5
+markdown>=2.6.5
 django-secretballot>=0.5.0
 django-taggit>=0.17.6

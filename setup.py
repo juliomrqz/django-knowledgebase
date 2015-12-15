@@ -32,10 +32,10 @@ if sys.argv[-1] == 'tag':
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
-install_requires = []
+# install_requires = []
 
-with open('requirements.txt') as f:
-    install_requires = f.read().splitlines()
+# with open('requirements.txt') as f:
+#     install_requires = f.read().splitlines()
 
 setup(
     name='Django-Knowledgebase',
@@ -49,7 +49,8 @@ setup(
         'django_knowledgebase',
     ],
     include_package_data=True,
-    install_requires=install_requires,
+    install_requires=[
+    ],
     license="MIT",
     zip_safe=False,
     keywords='django-knowledgebase',
