@@ -36,7 +36,6 @@ category = Recipe(
     _quantity=3
 )
 
-
 article = Recipe(
     Article,
     title=seq('Article'),

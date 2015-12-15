@@ -82,7 +82,7 @@ class ArticleAdmin(admin.ModelAdmin):
         rows_updated = 0
 
         for obj in queryset:
-            obj.add_vote(time(), 1)
+            obj.add_vote(time(), -1)
 
             rows_updated += 1
 

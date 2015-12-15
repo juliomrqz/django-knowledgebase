@@ -18,6 +18,7 @@ try:
             "django.contrib.contenttypes",
             "django.contrib.sites",
             "django_knowledgebase",
+            "taggit",
             "secretballot",
         ],
         SITE_ID=1,

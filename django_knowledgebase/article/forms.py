@@ -9,4 +9,4 @@ class ArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = ['title', 'slug', 'content', 'category', 'status']
+        fields = ['title', 'slug', 'content', 'category', 'status', 'tags']

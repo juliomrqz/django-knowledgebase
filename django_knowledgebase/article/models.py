@@ -9,6 +9,7 @@ from django.utils.translation import ugettext as _
 from markupfield.fields import MarkupField
 from model_utils.models import TimeStampedModel
 from secretballot import enable_voting_on
+from taggit.managers import TaggableManager
 
 from .querysets import ArticleQuerySet
 
@@ -30,6 +31,8 @@ class Article(TimeStampedModel):
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     status = models.IntegerField(choices=STATUS, default=STATUS.draft)
+
+    tags = TaggableManager(blank=True)
 
     objects = ArticleQuerySet().as_manager()
 

@@ -30,6 +30,7 @@ class ArticleTest(ArticleCategorySetUpMixin):
         self.assertEqual(obj1.title, str(obj1))
         self.assertEqual(obj1.title, 'Article3')
         self.assertEqual(obj1.created_by, self.user_one)
+        self.assertEqual(','.join(tuple(obj1.tags.names())), 'blue,green,red')
 
         self.assertIsInstance(obj1.content, Markup)
 
@@ -47,6 +48,10 @@ class ArticleTest(ArticleCategorySetUpMixin):
         self.assertEqual(self.articles_one[0].status, STATUS.draft)
         self.assertEqual(self.articles_two[0].status, STATUS.published)
         self.assertEqual(self.articles_three[0].status, STATUS.draft)
+
+    def test_article_tags(self):
+        self.assertEqual(len(self.articles_one[2].tags.similar_objects()), 5)
+        self.assertEqual(len(self.articles_two[2].tags.similar_objects()), 0)
 
     def tearDown(self):
         pass

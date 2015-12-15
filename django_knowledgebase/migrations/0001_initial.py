@@ -6,11 +6,13 @@ import model_utils.fields
 import markupfield.fields
 import django.utils.timezone
 from django.conf import settings
+import taggit.managers
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('taggit', '0002_auto_20150616_2121'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -41,7 +43,7 @@ class Migration(migrations.Migration):
                 ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, verbose_name='modified', editable=False)),
                 ('title', models.CharField(max_length=200, verbose_name='Title')),
                 ('slug', models.SlugField()),
-                ('description', models.TextField(max_length=200, verbose_name='Description')),
+                ('description', models.TextField(max_length=200, verbose_name='Description', blank=True)),
                 ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -58,5 +60,10 @@ class Migration(migrations.Migration):
             model_name='article',
             name='created_by',
             field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
+        ),
+        migrations.AddField(
+            model_name='article',
+            name='tags',
+            field=taggit.managers.TaggableManager(to='taggit.Tag', through='taggit.TaggedItem', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
         ),
     ]

@@ -9,6 +9,7 @@ Tests for `django-knowledgebase` models module.
 """
 
 from __future__ import absolute_import, unicode_literals
+from time import time
 
 from django.test import TestCase
 
@@ -57,3 +58,23 @@ class ArticleCategorySetUpMixin(TestCase):
             content="# Title",
             _quantity=1
         )
+
+        # Add tags
+        for art in self.articles_one:
+            art.tags.add("red", "green", "blue")
+
+        self.articles_one[1].tags.add("yellow")
+
+        self.custom_article[0].tags.add("red")
+
+        # Add votes
+        art_len = len(self.articles_two)
+        for i in range(art_len):
+            for j in range(i * 2):
+                self.articles_two[i].add_vote(time(), 1)
+                self.articles_three[i].add_vote(time(), 1)
+
+            if i % 2 == 0:
+                for j in range(i * i):
+                    self.articles_two[i].add_vote(time(), -1)
+                    self.articles_three[i].add_vote(time(), -1)
