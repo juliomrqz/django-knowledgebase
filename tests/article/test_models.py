@@ -35,8 +35,8 @@ class ArticleTest(ArticleCategorySetUpMixin):
 
         self.assertEqual(obj2.title, 'Custom Article')
         self.assertEqual(obj2.content.markup_type, 'markdown')
-        self.assertEqual(obj2.content._get_raw(), '# Title')
-        self.assertEqual(obj2.content._get_rendered(), '<h1>Title</h1>')
+        self.assertEqual(obj2.content.raw, '# Title')
+        self.assertEqual(obj2.content.rendered, '<h1>Title</h1>')
 
     def test_article_querysets(self):
         self.assertEqual(len(Article.objects.by_author(self.user_one)), 15)

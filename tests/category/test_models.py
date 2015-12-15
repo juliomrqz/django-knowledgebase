@@ -10,8 +10,6 @@ Tests for `django-knowledgebase` models module.
 
 from __future__ import absolute_import, unicode_literals
 
-from markupfield.fields import Markup
-
 from django_knowledgebase.models import Category
 from ..tests import ArticleCategorySetUpMixin
 
@@ -29,8 +27,6 @@ class ArticleTest(ArticleCategorySetUpMixin):
         self.assertEqual(obj1.title, str(obj1))
         self.assertEqual(obj1.title, 'Category3')
         self.assertEqual(obj2.created_by, self.user_one)
-
-        self.assertIsInstance(obj1.description, Markup)
 
     def test_category_querysets(self):
         self.assertEqual(len(Category.objects.by_author(self.user_one)), 3)

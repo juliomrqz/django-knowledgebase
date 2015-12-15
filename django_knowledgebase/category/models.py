@@ -2,10 +2,10 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 
-from markupfield.fields import MarkupField
 from model_utils.models import TimeStampedModel
 
 from .querysets import CategoryQuerySet
@@ -16,9 +16,11 @@ class Category(TimeStampedModel):
 
     title = models.CharField(_('Title'), max_length=200)
 
+    slug = models.SlugField()
+
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL)
 
-    description = MarkupField(_('Description'), default_markup_type='markdown')
+    description = models.TextField(_('Description'), max_length=200)
 
     objects = CategoryQuerySet().as_manager()
 
@@ -26,6 +28,13 @@ class Category(TimeStampedModel):
         app_label = 'django_knowledgebase'
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
+
+    def save(self, *args, **kwargs):
+        # Newly created object, so set slug
+        if not self.id:
+            self.slug = slugify(self.title)
+
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

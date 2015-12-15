@@ -12,8 +12,7 @@ definitions = [
 
 **Hypertext Markup Language**, a standardized system for tagging
 text files to achieve font, color, graphic, and hyperlink effects on
-*World Wide Web pages*."
-    ''',
+*World Wide Web pages*.''',
     ''''# JavaScript
 
 an **object-oriented** computer programming language commonly used to
@@ -33,7 +32,7 @@ category = Recipe(
     Category,
     title=seq('Category'),
     created_by=foreign_key(user),
-    description=cycle(definitions),
+    description=cycle('description'),
     _quantity=3
 )
 
