@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.contrib import admin
 from django.utils.translation import ugettext as _
 
 from reversion.admin import VersionAdmin
@@ -10,6 +9,7 @@ from ..base.choices import STATUS
 
 class ArticleAdmin(VersionAdmin):
     actions = ('make_published', 'make_draft',)
+    date_hierarchy = 'created'
     list_display = (
         'title', 'created_by', 'status', 'category_title',
     )
@@ -17,6 +17,8 @@ class ArticleAdmin(VersionAdmin):
     prepopulated_fields = {"slug": ("title",)}
     raw_id_fields = ('created_by', 'category', )
     search_fields = ['title', 'content', 'category__title']
+
+    history_latest_first = True
 
     def category_title(self, instance):
         return instance.category.title

@@ -20,6 +20,7 @@ try:
             "django_knowledgebase",
             "reversion",
             "taggit",
+            "pytz",
         ],
         SITE_ID=1,
         MIDDLEWARE_CLASSES=(),

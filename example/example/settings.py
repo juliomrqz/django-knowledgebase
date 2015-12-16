@@ -48,6 +48,7 @@ INSTALLED_APPS = (
 
     'taggit',
     'reversion',
+    'pytz',
     'django_knowledgebase',
 )
 
