@@ -21,7 +21,7 @@ class ArticleTest(ArticleCategorySetUpMixin):
 
     def test_create_new_article(self):
         obj1 = self.articles_one[2]
-        obj1_tags_name = ','.join(sorted(tuple(obj1.tags.names())))
+        obj1_tags_name = sorted(tuple(obj1.tags.names()))
         obj2 = self.custom_article[0]
 
         self.assertTrue(obj1.title)
@@ -31,7 +31,7 @@ class ArticleTest(ArticleCategorySetUpMixin):
         self.assertEqual(obj1.title, str(obj1))
         self.assertEqual(obj1.title, 'Article3')
         self.assertEqual(obj1.created_by, self.user_one)
-        self.assertEqual(obj1_tags_name, 'blue,green,red')
+        self.assertEqual(obj1_tags_name, ['blue', 'green', 'red'])
 
         self.assertIsInstance(obj1.content, Markup)
 
