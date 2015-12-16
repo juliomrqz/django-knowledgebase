@@ -44,23 +44,24 @@ class AdminArticleTest(TestCase):
 
         self.user = user.make()
         self.category = category.make(
-            created_by=self.user, _quantity=1
+            author=self.user, _quantity=1
         )
         self.articles = article.make(
             category=self.category[0],
-            created_by=self.user,
+            author=self.user,
             _quantity=3
         )
         self.articles_published = article.make(
             category=self.category[0],
-            created_by=self.user,
+            author=self.user,
             status=STATUS.published,
             _quantity=3
         )
 
     def test_default_fields(self):
-        defaul_fields = ['category', 'content', 'content_markup_type',
-                         'created_by', 'slug', 'status', 'tags', 'title']
+        defaul_fields = ['author', 'category', 'content',
+                         'content_markup_type', 'slug', 'status', 'tags',
+                         'title']
 
         fields = sorted(
             list(self.app_admin.get_form(self.request).base_fields)

@@ -22,37 +22,37 @@ class ArticleCategorySetUpMixin(TestCase):
         self.user_one = user.make()
         self.user_two = user.make()
 
-        self.categories = category.make(created_by=self.user_one)
+        self.categories = category.make(author=self.user_one)
         self.categories_user_two = category.make(
-            created_by=self.user_two, _quantity=5
+            author=self.user_two, _quantity=5
         )
 
         self.articles_one = article.make(
             category=self.categories[0],
-            created_by=self.user_one,
+            author=self.user_one,
 
         )
         self.articles_two = article.make(
             category=self.categories[1],
-            created_by=self.user_one,
+            author=self.user_one,
             status=STATUS.published,
 
         )
         self.articles_three = article.make(
             category=self.categories[2],
-            created_by=self.user_one,
+            author=self.user_one,
         )
 
         self.articles_user_two = article.make(
             category=self.categories[0],
-            created_by=self.user_two,
+            author=self.user_two,
             _quantity=3
         )
 
         self.custom_article = article.make(
             title="Custom Article",
             category=self.categories[0],
-            created_by=self.user_two,
+            author=self.user_two,
             status=STATUS.published,
             content="# Title",
             _quantity=1

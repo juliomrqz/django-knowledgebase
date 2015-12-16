@@ -18,12 +18,19 @@ try:
             "django.contrib.contenttypes",
             "django.contrib.sites",
             "django_knowledgebase",
+            "haystack",
             "reversion",
             "taggit",
             "pytz",
         ],
         SITE_ID=1,
         MIDDLEWARE_CLASSES=(),
+        HAYSTACK_CONNECTIONS = {
+            'default': {
+                'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+                'PATH': '.whoosh_index',
+            }
+        }
     )
 
     try:

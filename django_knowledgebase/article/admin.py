@@ -11,11 +11,11 @@ class ArticleAdmin(VersionAdmin):
     actions = ('make_published', 'make_draft',)
     date_hierarchy = 'created'
     list_display = (
-        'title', 'created_by', 'status', 'category_title',
+        'title', 'author', 'status', 'category_title',
     )
     list_filter = ('modified', 'status',)
     prepopulated_fields = {"slug": ("title",)}
-    raw_id_fields = ('created_by', 'category', )
+    raw_id_fields = ('author', 'category', )
     search_fields = ['title', 'content', 'category__title']
 
     history_latest_first = True

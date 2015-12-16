@@ -18,9 +18,11 @@ class Category(TimeStampedModel):
 
     slug = models.SlugField()
 
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
-    description = models.TextField(_('Description'), max_length=200, blank=True)
+    description = models.TextField(
+        _('Description'), max_length=200, blank=True
+    )
 
     objects = CategoryQuerySet().as_manager()
 

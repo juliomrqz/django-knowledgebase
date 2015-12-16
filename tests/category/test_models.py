@@ -26,7 +26,7 @@ class ArticleTest(ArticleCategorySetUpMixin):
 
         self.assertEqual(obj1.title, str(obj1))
         self.assertEqual(obj1.title, 'Category3')
-        self.assertEqual(obj2.created_by, self.user_one)
+        self.assertEqual(obj2.author, self.user_one)
 
     def test_category_querysets(self):
         self.assertEqual(len(Category.objects.by_author(self.user_one)), 3)

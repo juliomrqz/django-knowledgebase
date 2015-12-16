@@ -31,7 +31,7 @@ user = Recipe(
 category = Recipe(
     Category,
     title=seq('Category'),
-    created_by=foreign_key(user),
+    author=foreign_key(user),
     description=cycle('description'),
     _quantity=3
 )
@@ -39,7 +39,7 @@ category = Recipe(
 article = Recipe(
     Article,
     title=seq('Article'),
-    created_by=foreign_key(user),
+    author=foreign_key(user),
     category=foreign_key(category),
     content=cycle(definitions),
     _quantity=5

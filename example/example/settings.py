@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from os.path import abspath, basename, dirname, join, normpath
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EXAMPLE_ROOT = dirname(abspath(__file__))
+
+BASE_DIR = dirname(EXAMPLE_ROOT)
 
 
 # Example project settings - unsuitable for production
@@ -46,6 +48,7 @@ INSTALLED_APPS = (
 
     'debug_toolbar',
 
+    'haystack',
     'taggit',
     'reversion',
     'pytz',
@@ -61,6 +64,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'example.urls'
@@ -68,14 +73,20 @@ ROOT_URLCONF = 'example.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            normpath(join(EXAMPLE_ROOT, 'templates')),
+        ],
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
             ],
         },
     },
@@ -95,7 +106,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -118,6 +129,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+STATICFILES_DIRS = (
+    normpath(join(EXAMPLE_ROOT, 'static')),
+)
+
+# HAYSTACK CONFIGURATION
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': join(BASE_DIR, '.whoosh_index'),
+    }
+}
+
+
+# TOOLBAR CONFIGURATION
+DEBUG_TOOLBAR_CONFIG = {
+    # URL of the copy of jQuery
+    'JQUERY_URL': '/static/js/jquery.min.js',
+}
 
 
 # A sample logging configuration.

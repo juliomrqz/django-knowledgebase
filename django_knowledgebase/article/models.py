@@ -28,7 +28,7 @@ class Article(TimeStampedModel):
 
     category = models.ForeignKey(Category, related_name='articles')
 
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     status = models.IntegerField(choices=STATUS, default=STATUS.draft)
 

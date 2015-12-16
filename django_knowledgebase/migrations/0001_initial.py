@@ -29,6 +29,7 @@ class Migration(migrations.Migration):
                 ('content_markup_type', models.CharField(default='markdown', max_length=30, choices=[(b'', b'--'), (b'html', 'HTML'), (b'plain', 'Plain'), (b'markdown', 'Markdown')])),
                 ('_content_rendered', models.TextField(editable=False)),
                 ('status', models.IntegerField(default=0, choices=[(0, 'draft'), (1, 'published')])),
+                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'verbose_name': 'Article',
@@ -44,7 +45,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=200, verbose_name='Title')),
                 ('slug', models.SlugField()),
                 ('description', models.TextField(max_length=200, verbose_name='Description', blank=True)),
-                ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'verbose_name': 'Category',
@@ -55,11 +56,6 @@ class Migration(migrations.Migration):
             model_name='article',
             name='category',
             field=models.ForeignKey(related_name='articles', to='django_knowledgebase.Category'),
-        ),
-        migrations.AddField(
-            model_name='article',
-            name='created_by',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
             model_name='article',

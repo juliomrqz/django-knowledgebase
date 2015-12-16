@@ -138,3 +138,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+### Custom ###
+.whoosh_index/

@@ -30,7 +30,7 @@ class ArticleTest(ArticleCategorySetUpMixin):
 
         self.assertEqual(obj1.title, str(obj1))
         self.assertEqual(obj1.title, 'Article3')
-        self.assertEqual(obj1.created_by, self.user_one)
+        self.assertEqual(obj1.author, self.user_one)
         self.assertEqual(obj1_tags_name, ['blue', 'green', 'red'])
 
         self.assertIsInstance(obj1.content, Markup)

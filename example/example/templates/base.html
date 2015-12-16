@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load staticfiles i18n %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Example{% endblock title %}</title>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    {% block css %}
+    {% endblock css %}
+  </head>
+
+  <body>
+  <!--[if lte IE 9]>
+  <div role="alert" class="browserupgrade alert alert-danger alert-dismissible">
+    <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    You are using an&nbsp;<strong>outdated</strong>&nbsp;broswer. Please&nbsp;<a href="http://browsehappy.com" class="alert-link">upgrade your browser&nbsp;</a>to improve your experience.
+  </div>
+  <![endif]-->
+
+  {% block body %}
+    {% block container %}
+      <main>
+        {% block messages %}
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+      </main>
+    {% endblock container %}
+  {% endblock body %}
+
+    {% block js %}
+    {% endblock js %}
+    </body>
+</html>

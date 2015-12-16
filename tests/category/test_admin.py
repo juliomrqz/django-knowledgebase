@@ -38,23 +38,23 @@ class AdminCategoryTest(TestCase):
         self.admin = CategoryAdmin(Category, AdminSite())
         self.user = user.make()
         self.category = category.make(
-            created_by=self.user, _quantity=1
+            author=self.user, _quantity=1
         )
 
     def test_default_fields(self):
         self.assertEqual(
             list(self.admin.get_form(request).base_fields),
-            ['title', 'slug', 'created_by', 'description']
+            ['title', 'slug', 'author', 'description']
         )
 
         self.assertEqual(
             list(self.admin.get_fields(request)),
-            ['title', 'slug', 'created_by', 'description']
+            ['title', 'slug', 'author', 'description']
         )
 
         self.assertEqual(
             list(self.admin.get_fields(request, self.category[0])),
-            ['title', 'slug', 'created_by', 'description']
+            ['title', 'slug', 'author', 'description']
         )
 
     def tearDown(self):

@@ -8,7 +8,7 @@ from ..base.choices import STATUS
 class ArticleQuerySet(QuerySet):
 
     def by_author(self, user):
-        return self.filter(created_by=user)
+        return self.filter(author=user)
 
     def published(self):
         return self.filter(status=STATUS.published)
