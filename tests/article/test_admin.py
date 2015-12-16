@@ -78,7 +78,6 @@ class AdminArticleTest(TestCase):
     def test_custom_display_fields(self):
         article = Article.objects.filter(pk=4)[0]
 
-        self.assertEqual(self.app_admin.votes(article), 0)
         self.assertEqual(
             self.app_admin.category_title(article),
             article.category.title
@@ -122,62 +121,6 @@ class AdminArticleTest(TestCase):
         self.assertEqual(
             self.app_admin.django_knowledgebase_message,
             '6 articles were successfully marked as published.'
-        )
-
-    def test_upvote_action(self):
-        queryset = Article.objects.filter(pk=1)
-        queryset_all = Article.objects.all()
-
-        self.app_admin.upvote(self.request, queryset)
-
-        total_upvotes = 0
-        for article_obj in Article.objects.all():
-            total_upvotes += article_obj.total_upvotes
-
-        self.assertEqual(total_upvotes, 1)
-        self.assertEqual(
-            self.app_admin.django_knowledgebase_message,
-            '1 article was successfully upvoted.'
-        )
-
-        self.app_admin.upvote(self.request, queryset_all)
-
-        total_upvotes = 0
-        for article_obj in Article.objects.all():
-            total_upvotes += article_obj.total_upvotes
-
-        self.assertEqual(total_upvotes, 7)
-        self.assertEqual(
-            self.app_admin.django_knowledgebase_message,
-            '6 articles were successfully upvoted.'
-        )
-
-    def test_downvote_action(self):
-        queryset = Article.objects.filter(pk=2)
-        queryset_all = Article.objects.all()
-
-        self.app_admin.downvote(self.request, queryset)
-
-        total_downvotes = 0
-        for article_obj in Article.objects.all():
-            total_downvotes += article_obj.total_downvotes
-
-        self.assertEqual(total_downvotes, 1)
-        self.assertEqual(
-            self.app_admin.django_knowledgebase_message,
-            '1 article was successfully downvoted.'
-        )
-
-        self.app_admin.downvote(self.request, queryset_all)
-
-        total_downvotes = 0
-        for article_obj in Article.objects.all():
-            total_downvotes += article_obj.total_downvotes
-
-        self.assertEqual(total_downvotes, 7)
-        self.assertEqual(
-            self.app_admin.django_knowledgebase_message,
-            '6 articles were successfully downvoted.'
         )
 
     def tearDown(self):

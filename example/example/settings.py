@@ -46,7 +46,6 @@ INSTALLED_APPS = (
 
     'debug_toolbar',
 
-    'secretballot',
     'taggit',
 
     'django_knowledgebase',

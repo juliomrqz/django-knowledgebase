@@ -19,7 +19,6 @@ try:
             "django.contrib.sites",
             "django_knowledgebase",
             "taggit",
-            "secretballot",
         ],
         SITE_ID=1,
         MIDDLEWARE_CLASSES=(),

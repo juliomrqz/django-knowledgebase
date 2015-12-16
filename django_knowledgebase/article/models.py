@@ -8,7 +8,6 @@ from django.utils.translation import ugettext as _
 
 from markupfield.fields import MarkupField
 from model_utils.models import TimeStampedModel
-from secretballot import enable_voting_on
 from taggit.managers import TaggableManager
 
 from .querysets import ArticleQuerySet
@@ -50,5 +49,3 @@ class Article(TimeStampedModel):
 
     def __str__(self):
         return self.title
-
-enable_voting_on(Article)
