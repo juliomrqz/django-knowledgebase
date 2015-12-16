@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
 
     'taggit',
-
+    'reversion',
     'django_knowledgebase',
 )
 

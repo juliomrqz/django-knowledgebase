@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 
+from reversion.admin import VersionAdmin
+
 from ..base.choices import STATUS
 
 
-class ArticleAdmin(admin.ModelAdmin):
+class ArticleAdmin(VersionAdmin):
     actions = ('make_published', 'make_draft',)
     list_display = (
         'title', 'created_by', 'status', 'category_title',
