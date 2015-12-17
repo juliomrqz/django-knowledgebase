@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <article>
+    <header>
+      <h1>{{ article.title }}</h1>
+      <p>Published: <time pubdate="pubdate">{{ article.modified }}</time></p>
+      <p>Category: {{ article.category.title }}</p>
+    </header>
+    {{ article.content }}
+    <section>
+      <h2>Tags</h2>
+      <ul>
+        {% for tag in article.tags.names %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </article>
+{% endblock %}

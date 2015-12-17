@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <article>
+    <header>
+      <h1>{{ category.title }}</h1>
+      <p>Published: <time pubdate="pubdate">{{ category.modified }}</time></p>
+    </header>
+    {{ category.description }}
+    <section>
+      <h2>Articles</h2>
+      <ul>
+        {% for article in articles %}
+          <li>{{ article.title }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </article>
+{% endblock %}

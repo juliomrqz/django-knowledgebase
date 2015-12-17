@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+
+{% block title %}Search{% endblock title %}
+
 {% block content %}
   <h2>Search</h2>
   <form method="get" action=".">
@@ -17,9 +20,6 @@
         <p>
           <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
         </p>
-        <div>
-          {{ result.object.content }}
-        </div>
         {% empty %}
         <p>No results found.</p>
       {% endfor %}
