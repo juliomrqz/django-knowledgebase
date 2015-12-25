@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('content', markupfield.fields.MarkupField(rendered_field=True, verbose_name='Content')),
                 ('content_markup_type', models.CharField(default='markdown', max_length=30, choices=[(b'', b'--'), (b'html', 'HTML'), (b'plain', 'Plain'), (b'markdown', 'Markdown')])),
                 ('_content_rendered', models.TextField(editable=False)),
-                ('status', models.IntegerField(default=0, choices=[(0, 'draft'), (1, 'published')])),
+                ('status', models.IntegerField(default=0, choices=[(0, 'Draft'), (1, 'Published')])),
                 ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={

@@ -5,7 +5,9 @@
     <header>
       <h1>{{ article.title }}</h1>
       <p>Published: <time pubdate="pubdate">{{ article.modified }}</time></p>
-      <p>Category: {{ article.category.title }}</p>
+      <p>Category:
+        <a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a>
+      </p>
     </header>
     {{ article.content }}
     <section>

@@ -1,4 +1,6 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import (CreateView, DeleteView, DetailView,
+                                  UpdateView, ListView)
+from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
 
 from .models import Article
 
@@ -12,3 +14,21 @@ class ArticleListView(ListView):
 class ArticleDetailView(DetailView):
     model = Article
     context_object_name = 'article'
+
+
+class ArticleUpdateView(LoginRequiredMixin,
+                        SuperuserRequiredMixin,
+                        UpdateView):
+    model = Article
+    fields = ['title', 'slug', 'content', 'category', 'status', 'tags']
+
+    context_object_name = 'article_update'
+
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+
+
+class ArticleCreateView(CreateView):
+    model = Article
+    fields = ['title', 'slug', 'content', 'category', 'status', 'tags']

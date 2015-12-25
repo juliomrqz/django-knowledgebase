@@ -1,4 +1,7 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import (CreateView, DeleteView, DetailView,
+                                  ListView, UpdateView)
+
+from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
 
 from .models import Category
 from ..article.models import Article
@@ -15,7 +18,6 @@ class CategoryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
-
         context = super(CategoryDetailView, self).get_context_data(**kwargs)
 
         # Add in a QuerySet of the Articles
@@ -24,3 +26,21 @@ class CategoryDetailView(DetailView):
         ).all().published()
 
         return context
+
+
+class CategoryUpdateView(LoginRequiredMixin,
+                         SuperuserRequiredMixin,
+                         UpdateView):
+    model = Category
+    fields = ['title', 'slug', 'description']
+
+    context_object_name = 'category_update'
+
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+
+
+class CategoryCreateView(CreateView):
+    model = Category
+    fields = ['title', 'slug', 'description']

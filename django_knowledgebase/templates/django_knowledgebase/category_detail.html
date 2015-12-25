@@ -11,7 +11,9 @@
       <h2>Articles</h2>
       <ul>
         {% for article in articles %}
-          <li>{{ article.title }}</li>
+          <li>
+            <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+          </li>
         {% endfor %}
       </ul>
     </section>

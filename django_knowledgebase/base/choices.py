@@ -5,6 +5,6 @@ from django.utils.translation import ugettext as _
 from model_utils import Choices
 
 STATUS = Choices(
-    (0, 'draft', _('draft')),
-    (1, 'published', _('published')),
+    (0, 'draft', _('Draft')),
+    (1, 'published', _('Published')),
 )

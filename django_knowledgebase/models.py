@@ -6,4 +6,7 @@ from .article.models import Article
 from .category.models import Category
 
 
-__all__ = ['Article', 'Category']
+__all__ = [
+    'Article',
+    'Category'
+]
