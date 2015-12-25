@@ -23,7 +23,7 @@ class Article(TimeStampedModel):
 
     title = models.CharField(max_length=200)
 
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
 
     content = MarkupField(_('Content'), default_markup_type='markdown')
 
@@ -45,7 +45,8 @@ class Article(TimeStampedModel):
     def save(self, *args, **kwargs):
         # Newly created object, so set slug
         if not self.pk:
-            self.slug = slugify(self.title)
+            if not self.slug:
+                self.slug = slugify(self.title)
 
         super(Article, self).save(*args, **kwargs)
 

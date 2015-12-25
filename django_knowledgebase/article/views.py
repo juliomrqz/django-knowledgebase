@@ -32,3 +32,11 @@ class ArticleDeleteView(DeleteView):
 class ArticleCreateView(CreateView):
     model = Article
     fields = ['title', 'slug', 'content', 'category', 'status', 'tags']
+
+    def form_valid(self, form):
+        article = form.save(commit=False)
+
+        article.author = self.request.user
+        article.save()
+
+        return super(ArticleCreateView, self).form_valid(form)

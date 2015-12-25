@@ -44,3 +44,11 @@ class CategoryDeleteView(DeleteView):
 class CategoryCreateView(CreateView):
     model = Category
     fields = ['title', 'slug', 'description']
+
+    def form_valid(self, form):
+        category = form.save(commit=False)
+
+        category.author = self.request.user
+        category.save()
+
+        return super(CategoryCreateView, self).form_valid(form)

@@ -17,7 +17,7 @@ class Category(TimeStampedModel):
 
     title = models.CharField(_('Title'), max_length=200)
 
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
@@ -34,8 +34,9 @@ class Category(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         # Newly created object, so set slug
-        if not self.id:
-            self.slug = slugify(self.title)
+        if not self.pk:
+            if not self.slug:
+                self.slug = slugify(self.title)
 
         super(Category, self).save(*args, **kwargs)
 
