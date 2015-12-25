@@ -31,7 +31,7 @@ class DashboardArticleUpdateView(ArticleUpdateView,
                                  LoginRequiredMixin,
                                  SuperuserRequiredMixin
                                  ):
-    context_object_name = 'dashboard_article_update'
+    context_object_name = 'article'
     template_name_suffix = '_dashboard_update'
 
 

@@ -34,7 +34,7 @@ class CategoryUpdateView(LoginRequiredMixin,
     model = Category
     fields = ['title', 'slug', 'description']
 
-    context_object_name = 'category_update'
+    context_object_name = 'category'
 
 
 class CategoryDeleteView(DeleteView):

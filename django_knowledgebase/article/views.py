@@ -22,7 +22,7 @@ class ArticleUpdateView(LoginRequiredMixin,
     model = Article
     fields = ['title', 'slug', 'content', 'category', 'status', 'tags']
 
-    context_object_name = 'article_update'
+    context_object_name = 'article'
 
 
 class ArticleDeleteView(DeleteView):
