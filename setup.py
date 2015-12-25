@@ -4,14 +4,14 @@
 import os
 import sys
 
-import django_knowledgebase
+import knowledgebase
 
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-version = django_knowledgebase.__version__
+version = knowledgebase.__version__
 
 if sys.argv[-1] == 'publish':
     try:
@@ -46,7 +46,7 @@ setup(
     author_email='j@bazzite.com',
     url='https://github.com/bazzite/django-knowledgebase',
     packages=[
-        'django_knowledgebase',
+        'knowledgebase',
     ],
     include_package_data=True,
     install_requires=[

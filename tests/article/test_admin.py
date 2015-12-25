@@ -12,9 +12,9 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.admin.sites import AdminSite
 from django.test import TestCase
-from django_knowledgebase.admin import ArticleAdmin
-from django_knowledgebase.base.choices import STATUS
-from django_knowledgebase.models import Article
+from knowledgebase.admin import ArticleAdmin
+from knowledgebase.base.choices import STATUS
+from knowledgebase.models import Article
 
 from ..mommy_recipes import user, category, article
 
@@ -22,7 +22,7 @@ from ..mommy_recipes import user, category, article
 class ModifiedArticleAdmin(ArticleAdmin):
 
     def message_user(self, request, message):
-        self.django_knowledgebase_message = message
+        self.knowledgebase_message = message
 
 
 class MockRequest(object):
@@ -92,7 +92,7 @@ class AdminArticleTest(TestCase):
 
         self.assertEqual(len(Article.objects.unpublished()), 4)
         self.assertEqual(
-            self.app_admin.django_knowledgebase_message,
+            self.app_admin.knowledgebase_message,
             '1 article was successfully marked as draft.'
         )
 
@@ -100,7 +100,7 @@ class AdminArticleTest(TestCase):
 
         self.assertEqual(len(Article.objects.unpublished()), 6)
         self.assertEqual(
-            self.app_admin.django_knowledgebase_message,
+            self.app_admin.knowledgebase_message,
             '6 articles were successfully marked as draft.'
         )
 
@@ -112,7 +112,7 @@ class AdminArticleTest(TestCase):
 
         self.assertEqual(len(Article.objects.published()), 4)
         self.assertEqual(
-            self.app_admin.django_knowledgebase_message,
+            self.app_admin.knowledgebase_message,
             '1 article was successfully marked as published.'
         )
 
@@ -120,7 +120,7 @@ class AdminArticleTest(TestCase):
 
         self.assertEqual(len(Article.objects.published()), 6)
         self.assertEqual(
-            self.app_admin.django_knowledgebase_message,
+            self.app_admin.knowledgebase_message,
             '6 articles were successfully marked as published.'
         )
 

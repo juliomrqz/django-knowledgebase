@@ -24,7 +24,7 @@ Install Django-Knowledgebase::
 
 Then use it in a project::
 
-    import django_knowledgebase
+    import knowledgebase
 
 Features
 --------

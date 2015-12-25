@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-from django_knowledgebase.apps import DjangoKnowledgebaseConfig
+from knowledgebase.apps import DjangoKnowledgebaseConfig
 
 
 class SettingsTestCase(TestCase):
@@ -11,5 +11,5 @@ class SettingsTestCase(TestCase):
         self.AppConfig = DjangoKnowledgebaseConfig
 
     def test_app_config(self):
-        self.assertTrue(self.AppConfig.name, 'django_knowledgebase')
+        self.assertTrue(self.AppConfig.name, 'knowledgebase')
         self.assertTrue(self.AppConfig.verbose_name, 'Knowledgebase')

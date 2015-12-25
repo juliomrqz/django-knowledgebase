@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='article',
             name='category',
-            field=models.ForeignKey(related_name='articles', to='django_knowledgebase.Category'),
+            field=models.ForeignKey(related_name='articles', to='knowledgebase.Category'),
         ),
         migrations.AddField(
             model_name='article',

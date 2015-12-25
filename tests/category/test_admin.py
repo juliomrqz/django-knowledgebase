@@ -13,8 +13,8 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.admin.sites import AdminSite
 from django.test import TestCase
 
-from django_knowledgebase.admin import CategoryAdmin
-from django_knowledgebase.models import Category
+from knowledgebase.admin import CategoryAdmin
+from knowledgebase.models import Category
 
 from ..mommy_recipes import user, category
 

@@ -1,7 +1,7 @@
-django_knowledgebase
-====================
+knowledgebase
+=============
 
 .. toctree::
    :maxdepth: 4
 
-   django_knowledgebase
+   knowledgebase

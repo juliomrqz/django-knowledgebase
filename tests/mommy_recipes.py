@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from model_mommy.recipe import Recipe, foreign_key, seq
 
-from django_knowledgebase.models import Article, Category
+from knowledgebase.models import Article, Category
 
 definitions = [
     ''''# HTML

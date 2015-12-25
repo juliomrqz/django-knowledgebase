@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-from django_knowledgebase.forms import CategoryForm
+from knowledgebase.forms import CategoryForm
 
 
 class CategoryFormTestCase(TestCase):

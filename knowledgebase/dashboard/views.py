@@ -16,7 +16,7 @@ class DashboardHomeView(LoginRequiredMixin,
                         TemplateView):
     context_object_name = 'dashboard_home'
 
-    template_name = 'django_knowledgebase/' + context_object_name + '.html'
+    template_name = 'knowledgebase/' + context_object_name + '.html'
 
     def get_context_data(self, **kwargs):
         context = super(DashboardHomeView, self).get_context_data(**kwargs)

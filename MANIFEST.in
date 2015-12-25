@@ -4,4 +4,4 @@ include HISTORY.rst
 include LICENSE
 include README.rst
 include requirements.txt
-recursive-include django_knowledgebase *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
+recursive-include knowledgebase *.html *.png *.gif *js *.css *jpg *jpeg *svg *py

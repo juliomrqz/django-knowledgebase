@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-from django_knowledgebase.base.choices import STATUS
-from django_knowledgebase.forms import ArticleForm
+from knowledgebase.base.choices import STATUS
+from knowledgebase.forms import ArticleForm
 
 
 class ArticleFormTestCase(TestCase):

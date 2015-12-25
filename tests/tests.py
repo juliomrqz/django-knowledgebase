@@ -12,7 +12,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.test import TestCase
 
-from django_knowledgebase.base.choices import STATUS
+from knowledgebase.base.choices import STATUS
 from .mommy_recipes import user, category, article
 
 

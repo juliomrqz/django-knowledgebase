@@ -16,7 +16,7 @@ before_install:
 install: pip install -r requirements_test.txt
 
 # command to run tests using coverage, e.g. python setup.py test
-# script: coverage run --source django_knowledgebase runtests.py
+# script: coverage run --source knowledgebase runtests.py
 script: tox
 
 after_success:

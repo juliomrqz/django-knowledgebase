@@ -38,7 +38,7 @@ class Article(TimeStampedModel):
     objects = ArticleQuerySet().as_manager()
 
     class Meta:
-        app_label = 'django_knowledgebase'
+        app_label = 'knowledgebase'
         verbose_name = _('Article')
         verbose_name_plural = _('Articles')
 

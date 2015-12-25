@@ -24,7 +24,7 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 lint:
-	flake8 django_knowledgebase tests
+	flake8 knowledgebase tests
 
 test:
 	python runtests.py tests
@@ -33,7 +33,7 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source django_knowledgebase runtests.py tests
+	coverage run --source knowledgebase runtests.py tests
 	coverage report -m
 	coverage html
 	open htmlcov/index.html
@@ -41,7 +41,7 @@ coverage:
 docs:
 	rm -f docs/django-knowledgebase.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ django_knowledgebase
+	sphinx-apidoc -o docs/ knowledgebase
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	open docs/_build/html/index.html

@@ -12,12 +12,12 @@ try:
                 "ENGINE": "django.db.backends.sqlite3",
             }
         },
-        ROOT_URLCONF="django_knowledgebase.urls",
+        ROOT_URLCONF="knowledgebase.urls",
         INSTALLED_APPS=[
             "django.contrib.auth",
             "django.contrib.contenttypes",
             "django.contrib.sites",
-            "django_knowledgebase",
+            "knowledgebase",
             "haystack",
             "reversion",
             "taggit",

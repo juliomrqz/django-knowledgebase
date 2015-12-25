@@ -12,8 +12,8 @@ from __future__ import absolute_import, unicode_literals
 
 from markupfield.fields import Markup
 
-from django_knowledgebase.base.choices import STATUS
-from django_knowledgebase.models import Article
+from knowledgebase.base.choices import STATUS
+from knowledgebase.models import Article
 from ..tests import ArticleCategorySetUpMixin
 
 

@@ -10,7 +10,7 @@ Tests for `django-knowledgebase` models module.
 
 from __future__ import absolute_import, unicode_literals
 
-from django_knowledgebase.models import Category
+from knowledgebase.models import Category
 from ..tests import ArticleCategorySetUpMixin
 
 

@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class DjangoKnowledgebaseConfig(AppConfig):
-    name = 'django_knowledgebase'
+    name = 'knowledgebase'
     verbose_name = 'Knowledgebase'

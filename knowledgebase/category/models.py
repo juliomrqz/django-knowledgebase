@@ -28,7 +28,7 @@ class Category(TimeStampedModel):
     objects = CategoryQuerySet().as_manager()
 
     class Meta:
-        app_label = 'django_knowledgebase'
+        app_label = 'knowledgebase'
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
 
