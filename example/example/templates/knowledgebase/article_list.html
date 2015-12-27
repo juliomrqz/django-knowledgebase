@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Articles{% endblock title %}
+
+{% block content %}
+  <div class="jumbotron text-center">
+    <h1>Articles</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="list-group">
+        {% for article in articles_list %}
+          <a href="{{ article.get_absolute_url }}" class="list-group-item">{{ article.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

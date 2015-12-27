@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Knowledgeable{% endblock title %}
+
+{% block content %}
+  <a href="{% url 'knowledgebase:article_list' %}">Articles</a>
+
+  <a href="{% url 'knowledgebase:category_list' %}">Categories</a>
+{% endblock %}

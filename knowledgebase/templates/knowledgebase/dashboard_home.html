@@ -24,7 +24,7 @@
           <td>
             <a href="{{ category.get_absolute_url }}" target="_blank">View</a>
             |
-            <a href="{% url 'knowledgebase:dashboard_category_update' category.pk %}">Edit</a>
+            <a href="{% url 'knowledgebase:dashboard_category_update' category.pk %}">Update</a>
             |
             <a href="{% url 'knowledgebase:dashboard_category_delete' category.pk %}">Delete</a>
           </td>
@@ -62,7 +62,7 @@
           <td>
             <a href="{{ article.get_absolute_url }}" target="_blank">View</a>
             |
-            <a href="{% url 'knowledgebase:dashboard_article_update' article.pk %}">Edit</a>
+            <a href="{% url 'knowledgebase:dashboard_article_update' article.pk %}">Update</a>
             |
             <a href="{% url 'knowledgebase:dashboard_article_delete' article.pk %}">Delete</a>
           </td>

@@ -10,13 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-import os
-from os.path import abspath, basename, dirname, join, normpath
+from os.path import abspath, dirname, join, normpath
 
 EXAMPLE_ROOT = dirname(abspath(__file__))
 
 BASE_DIR = dirname(EXAMPLE_ROOT)
 
+SITE_ID = 1
 
 # Example project settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -43,17 +43,24 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
     'debug_toolbar',
     'django_extensions',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'crispy_forms',
+
     'haystack',
     'taggit',
     'reversion',
     'pytz',
-    'django_knowledgebase',
+    'knowledgebase',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -95,6 +102,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'example.wsgi.application'
 
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Email
 # https://docs.djangoproject.com/en/1.8/ref/settings/#email-backend
@@ -150,6 +162,12 @@ DEBUG_TOOLBAR_CONFIG = {
     # URL of the copy of jQuery
     'JQUERY_URL': '/static/js/jquery.min.js',
 }
+
+# CRISPY FORMS CONFIGURATION
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# ACCOUNT SETTINGS
+LOGIN_REDIRECT_URL = "/"
 
 
 # A sample logging configuration.

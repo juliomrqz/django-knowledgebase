@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <article>
+        <header>
+          <h1 class="text-center">{{ article.title }}</h1>
+        </header>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{ article.content }}
+          </div>
+        </div>
+        <section>
+          <div class="row">
+            <div class="col-md-6">
+              <dl>
+                <dt>Published</dt>
+                <dd><time pubdate="pubdate">{{ article.modified }}</time></dd>
+                <dt>Category</dt>
+                <dd><a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a></dd>
+              </dl>
+            </div>
+
+            <div class="col-md-6">
+              <h2 class="h4">Tags</h2>
+              <ul class="list-inline">
+                {% for tag in article.tags.names %}
+                  <li><span class="label label-default">{{ tag }}</span></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </section>
+      </article>
+    </div>
+  </div>
+{% endblock %}
