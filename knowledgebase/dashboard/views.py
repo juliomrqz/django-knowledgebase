@@ -16,7 +16,7 @@ class DashboardHomeView(LoginRequiredMixin,
                         TemplateView):
     context_object_name = 'dashboard_home'
 
-    template_name = 'knowledgebase/' + context_object_name + '.html'
+    template_name = 'knowledgebase/dashboard_home.html'
 
     def get_context_data(self, **kwargs):
         context = super(DashboardHomeView, self).get_context_data(**kwargs)
@@ -26,45 +26,29 @@ class DashboardHomeView(LoginRequiredMixin,
         return context
 
 
-# TODO: Check Mixins Order
-class DashboardArticleUpdateView(ArticleUpdateView,
-                                 LoginRequiredMixin,
-                                 SuperuserRequiredMixin
-                                 ):
-    context_object_name = 'article'
+class DashboardArticleUpdateView(ArticleUpdateView):
     template_name_suffix = '_dashboard_update'
 
 
-class DashboardArticleDeleteView(LoginRequiredMixin,
-                                 SuperuserRequiredMixin,
-                                 ArticleDeleteView):
+class DashboardArticleDeleteView(ArticleDeleteView):
     success_url = reverse_lazy('knowledgebase:dashboard_home')
     template_name_suffix = '_dashboard_delete'
 
 
-class DashboardArticleCreateView(LoginRequiredMixin,
-                                 SuperuserRequiredMixin,
-                                 ArticleCreateView):
+class DashboardArticleCreateView(ArticleCreateView):
     success_url = reverse_lazy('knowledgebase:dashboard_home')
     template_name_suffix = '_dashboard_create'
 
 
-# TODO: Check Mixins Order
-class DashboardCategoryUpdateView(CategoryUpdateView,
-                                  LoginRequiredMixin,
-                                  SuperuserRequiredMixin):
-    template_name_suffix = '_dashboard_create'
+class DashboardCategoryUpdateView(CategoryUpdateView):
+    template_name_suffix = '_dashboard_update'
 
 
-class DashboardCategoryDeleteView(LoginRequiredMixin,
-                                  SuperuserRequiredMixin,
-                                  CategoryDeleteView):
+class DashboardCategoryDeleteView(CategoryDeleteView):
     success_url = reverse_lazy('knowledgebase:dashboard_home')
     template_name_suffix = '_dashboard_delete'
 
 
-class DashboardCategoryCreateView(LoginRequiredMixin,
-                                  SuperuserRequiredMixin,
-                                  CategoryCreateView):
+class DashboardCategoryCreateView(CategoryCreateView):
     success_url = reverse_lazy('knowledgebase:dashboard_home')
     template_name_suffix = '_dashboard_create'

@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% load knowledgebase %}
-
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
@@ -54,7 +52,7 @@
         <tr>
           <td>{{ article.title }}</td>
           <td>{{ article.author.username }}</td>
-          <td>{{ article.status|article_status_text }}</td>
+          <td>{{ article.get_status_display }}</td>
           <td>{{ article.category.title }}</td>
           <td>
             {% for tag in article.tags.names %}

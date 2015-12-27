@@ -25,11 +25,15 @@ class ArticleUpdateView(LoginRequiredMixin,
     context_object_name = 'article'
 
 
-class ArticleDeleteView(DeleteView):
+class ArticleDeleteView(LoginRequiredMixin,
+                        SuperuserRequiredMixin,
+                        DeleteView):
     model = Article
 
 
-class ArticleCreateView(CreateView):
+class ArticleCreateView(LoginRequiredMixin,
+                        SuperuserRequiredMixin,
+                        CreateView):
     model = Article
     fields = ['title', 'slug', 'content', 'category', 'status', 'tags']
 

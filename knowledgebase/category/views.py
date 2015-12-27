@@ -37,11 +37,15 @@ class CategoryUpdateView(LoginRequiredMixin,
     context_object_name = 'category'
 
 
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(LoginRequiredMixin,
+                         SuperuserRequiredMixin,
+                         DeleteView):
     model = Category
 
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin,
+                         SuperuserRequiredMixin,
+                         CreateView):
     model = Category
     fields = ['title', 'slug', 'description']
 
