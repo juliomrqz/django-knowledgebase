@@ -1,0 +1,11 @@
+{{ object.category.title }}
+
+{{ object.title }}
+
+{{ object.content }}
+
+{% for tag in object.tags.names %}
+    {{ tag }}
+{% endfor %}
+
+{{ object.modified }}

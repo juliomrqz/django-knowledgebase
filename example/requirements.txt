@@ -1,0 +1,6 @@
+django>=1.8.0
+django-knowledgebase>=0.1.0
+django-debug-toolbar>=1.4
+django-extensions>=1.6.1
+django-allauth>=0.24.1
+django-crispy-forms>=1.5.2

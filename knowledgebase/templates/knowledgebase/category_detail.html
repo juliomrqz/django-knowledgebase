@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <article>
+    <header>
+      <h1>{{ category.title }}</h1>
+      <p>Published: <time pubdate="pubdate">{{ category.modified }}</time></p>
+    </header>
+    {{ category.description }}
+    <section>
+      <h2>Articles</h2>
+      <ul>
+        {% for article in articles %}
+          <li>
+            <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </article>
+{% endblock %}
