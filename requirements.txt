@@ -1,4 +1,4 @@
-django>=1.8,<1.9
+django>=1.8,<1.10
 django-model-utils>=2.5
 django-markupfield>=1.4.0
 markdown>=2.6.6
