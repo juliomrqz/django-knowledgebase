@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import model_utils.fields
-import knowledgebase.base.fields
 import django_markup.fields
 import django.utils.timezone
 from django.conf import settings
@@ -25,7 +24,7 @@ class Migration(migrations.Migration):
                 ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, verbose_name='created', editable=False)),
                 ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, verbose_name='modified', editable=False)),
                 ('title', models.CharField(max_length=200)),
-                ('slug', knowledgebase.base.fields.CustomAutoSlugField(editable=False, populate_from=b'title', unique=True, slugify=knowledgebase.base.fields.custom_slugify)),
+                ('slug', models.SlugField(unique=True)),
                 ('content', models.TextField(verbose_name='Content')),
                 ('markup', django_markup.fields.MarkupField(default='markdown', max_length=255, verbose_name='markup', choices=[(b'none', b'None (no processing)'), (b'linebreaks', b'Linebreaks'), (b'markdown', b'Markdown'), (b'restructuredtext', 'reStructuredText')])),
                 ('status', models.IntegerField(default=0, choices=[(0, 'Draft'), (1, 'Published')])),
@@ -43,7 +42,7 @@ class Migration(migrations.Migration):
                 ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, verbose_name='created', editable=False)),
                 ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, verbose_name='modified', editable=False)),
                 ('title', models.CharField(max_length=200, verbose_name='Title')),
-                ('slug', knowledgebase.base.fields.CustomAutoSlugField(editable=False, populate_from=b'title', unique=True, slugify=knowledgebase.base.fields.custom_slugify)),
+                ('slug', models.SlugField(unique=True)),
                 ('description', models.TextField(max_length=200, verbose_name='Description', blank=True)),
                 ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
