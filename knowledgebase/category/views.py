@@ -3,6 +3,7 @@ from django.views.generic import (CreateView, DeleteView, DetailView,
 
 from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
 
+from .forms import CategoryForm
 from .models import Category
 from ..article.models import Article
 
@@ -32,8 +33,7 @@ class CategoryUpdateView(LoginRequiredMixin,
                          SuperuserRequiredMixin,
                          UpdateView):
     model = Category
-    fields = ['title', 'slug', 'description']
-
+    form_class = CategoryForm
     context_object_name = 'category'
 
 
@@ -47,7 +47,7 @@ class CategoryCreateView(LoginRequiredMixin,
                          SuperuserRequiredMixin,
                          CreateView):
     model = Category
-    fields = ['title', 'slug', 'description']
+    form_class = CategoryForm
 
     def form_valid(self, form):
         category = form.save(commit=False)

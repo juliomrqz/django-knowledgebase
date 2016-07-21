@@ -2,6 +2,7 @@ from django.views.generic import (CreateView, DeleteView, DetailView,
                                   UpdateView, ListView)
 from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
 
+from .forms import ArticleForm
 from .models import Article
 
 
@@ -20,8 +21,7 @@ class ArticleUpdateView(LoginRequiredMixin,
                         SuperuserRequiredMixin,
                         UpdateView):
     model = Article
-    fields = ['title', 'slug', 'content', 'category', 'status', 'tags']
-
+    form_class = ArticleForm
     context_object_name = 'article'
 
 
@@ -35,7 +35,7 @@ class ArticleCreateView(LoginRequiredMixin,
                         SuperuserRequiredMixin,
                         CreateView):
     model = Article
-    fields = ['title', 'slug', 'content', 'category', 'status', 'tags']
+    form_class = ArticleForm
 
     def form_valid(self, form):
         article = form.save(commit=False)
