@@ -9,6 +9,8 @@ from django.utils.translation import ugettext as _
 
 from model_utils.models import TimeStampedModel
 
+from ..base.fields import CustomAutoSlugField
+
 from .querysets import CategoryQuerySet
 
 
@@ -17,7 +19,7 @@ class Category(TimeStampedModel):
 
     title = models.CharField(_('Title'), max_length=200)
 
-    slug = models.SlugField(unique=True)
+    slug = CustomAutoSlugField()
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
 

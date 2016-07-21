@@ -12,10 +12,11 @@ from model_utils.models import TimeStampedModel
 from reversion import revisions as reversion
 from taggit.managers import TaggableManager
 
-from .querysets import ArticleQuerySet
-
 from ..base.choices import STATUS
+from ..base.fields import CustomAutoSlugField
 from ..category.models import Category
+
+from .querysets import ArticleQuerySet
 
 
 @python_2_unicode_compatible
@@ -23,7 +24,7 @@ class Article(TimeStampedModel):
 
     title = models.CharField(max_length=200)
 
-    slug = models.SlugField(unique=True)
+    slug = CustomAutoSlugField()
 
     content = models.TextField(_('Content'))
 
