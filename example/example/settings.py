@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'reversion',
     'pytz',
     'knowledgebase',
+    'django_markup',
 )
 
 MIDDLEWARE_CLASSES = (

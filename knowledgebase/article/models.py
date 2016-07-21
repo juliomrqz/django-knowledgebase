@@ -7,7 +7,7 @@ from django.template.defaultfilters import slugify
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 
-from markupfield.fields import MarkupField
+from django_markup.fields import MarkupField
 from model_utils.models import TimeStampedModel
 from reversion import revisions as reversion
 from taggit.managers import TaggableManager
@@ -25,7 +25,9 @@ class Article(TimeStampedModel):
 
     slug = models.SlugField(unique=True)
 
-    content = MarkupField(_('Content'), default_markup_type='markdown')
+    content = models.TextField(_('Content'))
+
+    markup = MarkupField(default='markdown')
 
     category = models.ForeignKey(Category, related_name='articles')
 
