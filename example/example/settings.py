@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'reversion',
     'pytz',
     'knowledgebase',
+    'django_markup',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -72,8 +73,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'example.urls'
@@ -158,6 +157,19 @@ HAYSTACK_CONNECTIONS = {
 
 
 # TOOLBAR CONFIGURATION
+MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+INTERNAL_IPS = ('127.0.0.1', '10.0.2.2',)
+
+DEBUG_TOOLBAR_CONFIG = {
+    'DISABLE_PANELS': [
+        'debug_toolbar.panels.redirects.RedirectsPanel',
+    ],
+    'SHOW_TEMPLATE_CONTEXT': True,
+}
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
 DEBUG_TOOLBAR_CONFIG = {
     # URL of the copy of jQuery
     'JQUERY_URL': '/static/js/jquery.min.js',

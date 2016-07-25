@@ -60,7 +60,7 @@ class AdminArticleTest(TestCase):
 
     def test_default_fields(self):
         defaul_fields = ['author', 'category', 'content',
-                         'content_markup_type', 'slug', 'status', 'tags',
+                         'markup', 'slug', 'status', 'tags',
                          'title']
 
         fields = sorted(

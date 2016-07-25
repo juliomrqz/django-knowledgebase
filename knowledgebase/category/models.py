@@ -3,11 +3,12 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.template.defaultfilters import slugify
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 
 from model_utils.models import TimeStampedModel
+
+from ..base.tools import custom_slugify
 
 from .querysets import CategoryQuerySet
 
@@ -36,7 +37,7 @@ class Category(TimeStampedModel):
         # Newly created object, so set slug
         if not self.pk:
             if not self.slug:
-                self.slug = slugify(self.title)
+                self.slug = custom_slugify(self.title)
 
         super(Category, self).save(*args, **kwargs)
 

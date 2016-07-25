@@ -10,7 +10,7 @@ Tests for `django-knowledgebase` models module.
 
 from __future__ import absolute_import, unicode_literals
 
-from markupfield.fields import Markup
+from django_markup.templatetags.markup_tags import apply_markup
 
 from knowledgebase.base.choices import STATUS
 from knowledgebase.models import Article
@@ -33,12 +33,10 @@ class ArticleTest(ArticleCategorySetUpMixin):
         self.assertEqual(obj1.author, self.user_one)
         self.assertEqual(obj1_tags_name, ['blue', 'green', 'red'])
 
-        self.assertIsInstance(obj1.content, Markup)
-
         self.assertEqual(obj2.title, 'Custom Article')
-        self.assertEqual(obj2.content.markup_type, 'markdown')
-        self.assertEqual(obj2.content.raw, '# Title')
-        self.assertEqual(obj2.content.rendered, '<h1>Title</h1>')
+        self.assertEqual(obj2.markup, 'markdown')
+        self.assertEqual(obj2.content, '# Title')
+        self.assertEqual(apply_markup(obj2.content, obj2.markup), '<h1>Title</h1>')
 
     def test_article_querysets(self):
         self.assertEqual(len(Article.objects.by_author(self.user_one)), 15)

@@ -3,19 +3,19 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.template.defaultfilters import slugify
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 
-from markupfield.fields import MarkupField
+from django_markup.fields import MarkupField
 from model_utils.models import TimeStampedModel
 from reversion import revisions as reversion
 from taggit.managers import TaggableManager
 
-from .querysets import ArticleQuerySet
-
 from ..base.choices import STATUS
+from ..base.tools import custom_slugify
 from ..category.models import Category
+
+from .querysets import ArticleQuerySet
 
 
 @python_2_unicode_compatible
@@ -25,7 +25,9 @@ class Article(TimeStampedModel):
 
     slug = models.SlugField(unique=True)
 
-    content = MarkupField(_('Content'), default_markup_type='markdown')
+    content = models.TextField(_('Content'))
+
+    markup = MarkupField(default='markdown')
 
     category = models.ForeignKey(Category, related_name='articles')
 
@@ -46,7 +48,7 @@ class Article(TimeStampedModel):
         # Newly created object, so set slug
         if not self.pk:
             if not self.slug:
-                self.slug = slugify(self.title)
+                self.slug = custom_slugify(self.title)
 
         super(Article, self).save(*args, **kwargs)
 

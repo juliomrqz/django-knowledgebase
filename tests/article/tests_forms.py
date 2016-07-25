@@ -12,9 +12,8 @@ class ArticleFormTestCase(TestCase):
         form = ArticleForm({})
 
         self.assertFalse(form.is_valid())
-        self.assertEqual(len(form.errors), 5)
+        self.assertEqual(len(form.errors), 4)
         self.assertEqual(form.errors['title'], ['This field is required.'])
-        self.assertEqual(form.errors['slug'], ['This field is required.'])
         self.assertEqual(form.errors['content'], ['This field is required.'])
         self.assertEqual(form.errors['category'], ['This field is required.'])
         self.assertEqual(form.errors['status'], ['This field is required.'])

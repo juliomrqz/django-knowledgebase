@@ -32,13 +32,13 @@ if sys.argv[-1] == 'tag':
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
-# install_requires = []
+install_requires = []
 
-# with open('requirements.txt') as f:
-#     install_requires = f.read().splitlines()
+with open('requirements.txt') as f:
+    install_requires = f.read().splitlines()
 
 setup(
-    name='Django-Knowledgebase',
+    name='django-knowledgebase',
     version=version,
     description="""A knowledgebase made with Django""",
     long_description=readme + '\n\n' + history,
@@ -49,17 +49,17 @@ setup(
         'knowledgebase',
     ],
     include_package_data=True,
-    install_requires=[
-    ],
+    install_requires=install_requires,
     license="Apache License 2.0",
     zip_safe=False,
     keywords='django-knowledgebase',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Framework :: Django',
         'Framework :: Django :: 1.8',
+        'Framework :: Django :: 1.9',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
