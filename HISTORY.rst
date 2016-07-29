@@ -3,14 +3,12 @@
 History
 -------
 
-0.2.0 (2015-12-27)
+0.1.1 (2015-07-28)
 ++++++++++++++++++
 
-* Create Article Models, Forms and Views
-* Create Category Models, Forms and Views
-* Create Dashboard Section
+* Reduce the SQL calls in the Dashboard Home
 
-0.1.0 (2015-12-14)
+0.1.0 (2015-07-25)
 ++++++++++++++++++
 
 * First release on PyPI.
