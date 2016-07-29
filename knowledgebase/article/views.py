@@ -1,6 +1,10 @@
-from django.views.generic import (CreateView, DeleteView, DetailView,
+from django.views.generic import (CreateView, DeleteView,
                                   UpdateView, ListView)
+
 from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
+from hitcount.views import HitCountDetailView
+
+from ..conf import settings as app_settings
 
 from .forms import ArticleForm
 from .models import Article
@@ -12,9 +16,10 @@ class ArticleListView(ListView):
     queryset = model.objects.published()
 
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(HitCountDetailView):
     model = Article
     context_object_name = 'article'
+    count_hit = app_settings['COUNT_HIT']
 
 
 class ArticleUpdateView(LoginRequiredMixin,

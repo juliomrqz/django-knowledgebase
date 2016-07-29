@@ -21,6 +21,8 @@
                 <dd><time pubdate="pubdate">{{ article.modified }}</time></dd>
                 <dt>Category</dt>
                 <dd><a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a></dd>
+                <dt>Views</dt>
+                <dd>{{ hitcount.total_hits }}</dd>
               </dl>
             </div>
 

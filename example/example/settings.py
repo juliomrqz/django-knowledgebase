@@ -62,6 +62,7 @@ INSTALLED_APPS = (
     'pytz',
     'knowledgebase',
     'django_markup',
+    'hitcount',
 )
 
 MIDDLEWARE_CLASSES = (
