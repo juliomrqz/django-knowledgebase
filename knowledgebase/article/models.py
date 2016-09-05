@@ -9,6 +9,7 @@ from django.utils.translation import ugettext as _
 from django_markup.fields import MarkupField
 from model_utils.models import TimeStampedModel
 from reversion import revisions as reversion
+from secretballot import enable_voting_on
 from taggit.managers import TaggableManager
 
 from ..base.choices import STATUS
@@ -60,4 +61,5 @@ class Article(TimeStampedModel):
     def __str__(self):
         return self.title
 
+enable_voting_on(Article)
 reversion.register(Article)

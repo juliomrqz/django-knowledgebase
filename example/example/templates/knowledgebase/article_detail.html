@@ -23,6 +23,8 @@
                 <dd><a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a></dd>
                 <dt>Views</dt>
                 <dd>{{ hitcount.total_hits }}</dd>
+                <dt>Votes</dt>
+                <dd>{{ article.vote_total }}</dd>
               </dl>
             </div>
 
