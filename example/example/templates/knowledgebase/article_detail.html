@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+
+{% load i18n %}
 {% load markup_tags %}
 
 {% block content %}
@@ -13,10 +15,10 @@
               <time pubdate="pubdate">{{ article.modified }}</time>
             </li>
             <li>
-              <strong>Category:</strong> <a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a>
+              <strong>{% trans "Category" %}:</strong> <a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a>
             </li>
             <li>
-              <strong>Views:</strong> {{ hitcount.total_hits }}</a>
+              <strong>{% trans "Views" %}:</strong> {{ hitcount.total_hits }}</a>
             </li>
           </ul>
         </header>
@@ -27,23 +29,23 @@
         </div>
 
         <div class="well" id="voting-box">
-          Was this article helpful?
+          {% trans "Was this article helpful?" %}
           <a id="upvote-link" href="{% url 'knowledgebase:article_upvote' article.slug %}"
              data-toggle="tooltip"
-             title="Yes">
+             title="{% trans 'Yes' %}">
             <span class="glyphicon glyphicon-thumbs-up"></span>
           </a>
           |
           <a id="downvote-link" href="{% url 'knowledgebase:article_downvote' article.slug %}"
              data-toggle="tooltip"
-             title="No">
+             title="{% trans 'No' %}">
            <span class="glyphicon glyphicon-thumbs-down"></span>
           </a>
 
           <br>
 
           {% if article.vote_total %}
-            <small>{{ article.total_upvotes }} out of {{ article.total_upvotes|add:article.total_downvotes }} found this helpful</small>
+            <small>{% blocktrans with upvotes=article.total_upvotes downvotes=article.total_downvotes %}{{ total_upvotes }} out of {{ upvotes|add:downvotes }} found this helpful{% endblocktrans %}</small>
           {% endif %}
         </div>
       </article>

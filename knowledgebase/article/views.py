@@ -2,6 +2,7 @@ from django.views.generic import (CreateView, DeleteView,
                                   UpdateView, ListView)
 from django.views.generic.detail import DetailView
 from django.shortcuts import redirect
+from django.utils.translation import ugettext_lazy as _
 
 from braces.views import (AjaxResponseMixin, JSONResponseMixin,
                           LoginRequiredMixin, MessageMixin,
@@ -59,9 +60,9 @@ class ArticleCreateView(LoginRequiredMixin,
 class ArticleVoteView(MessageMixin, JSONResponseMixin, AjaxResponseMixin, DetailView):
     model = Article
     template_name = "knowledgebase/article_vote.html"
-    _success_upvote_message = "Thanks, glad we could help!"
-    _success_downvote_message = "We're sorry to hear that."
-    _error_message = "There was a problem completing your request."
+    _success_upvote_message = _("Thanks, glad we could help!")
+    _success_downvote_message = _("We're sorry to hear that.")
+    _error_message = _("There was a problem completing your request.")
 
     def get_context_data(self, **kwargs):
         context = super(ArticleVoteView, self).get_context_data(**kwargs)
@@ -80,7 +81,7 @@ class ArticleVoteView(MessageMixin, JSONResponseMixin, AjaxResponseMixin, Detail
 
     def get_ajax(self, request, *args, **kwargs):
         json_dict = {
-            'message': 'Bad request.'
+            'message': _('Bad request.').encode('utf-8')
         }
 
         return self.render_json_response(json_dict, 400)
@@ -95,7 +96,7 @@ class ArticleVoteView(MessageMixin, JSONResponseMixin, AjaxResponseMixin, Detail
             status = 500
 
         json_dict = {
-            'message': message
+            'message': message.encode('utf-8')
         }
 
         return self.render_json_response(json_dict, status)

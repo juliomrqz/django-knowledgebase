@@ -1,23 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans "Dashboard" %}{% endblock title %}
 
 {% block content %}
-  <h1>Dashboard</h1>
+  <h1>{% trans "Dashboard" %}</h1>
 
   <h2>
-    Categories
+    {% trans "Categories" %}
     <a href="{% url 'knowledgebase:dashboard_category_create' %}">
-      <small>Create</small>
+      <small>{% trans "Create" %}</small>
     </a>
   </h2>
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <td>Title</td>
-          <td>Author</td>
-          <td>Options</td>
+          <td>{% trans "Title" %}</td>
+          <td>{% trans "Author" %}</td>
+          <td>{% trans "Options" %}</td>
         </tr>
       </thead>
 
@@ -27,11 +29,17 @@
             <td>{{ category.title }}</td>
             <td>{{ category.author.username }}</td>
             <td>
-              <a href="{{ category.get_absolute_url }}" target="_blank">View</a>
+              <a href="{{ category.get_absolute_url }}" target="_blank">
+                {% trans "View" %}
+              </a>
               |
-              <a href="{% url 'knowledgebase:dashboard_category_update' category.pk %}">Update</a>
+              <a href="{% url 'knowledgebase:dashboard_category_update' category.pk %}">
+                {% trans "Update" %}
+              </a>
               |
-              <a href="{% url 'knowledgebase:dashboard_category_delete' category.pk %}">Delete</a>
+              <a href="{% url 'knowledgebase:dashboard_category_delete' category.pk %}">
+                {% trans "Delete" %}
+              </a>
             </td>
           </tr>
         {% endfor %}
@@ -42,21 +50,21 @@
   <h2>
     Articles
     <a href="{% url 'knowledgebase:dashboard_article_create' %}">
-      <small>Create</small>
+      <small>{% trans "Create" %}</small>
     </a>
   </h2>
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <td>Title</td>
-          <td>Author</td>
-          <td>Status</td>
-          <td>Category</td>
-          <td>Tags</td>
-          <td>Upvotes</td>
-          <td>Downvotes</td>
-          <td>Options</td>
+          <td>{% trans "Title" %}</td>
+          <td>{% trans "Author" %}</td>
+          <td>{% trans "Status" %}</td>
+          <td>{% trans "Category" %}</td>
+          <td>{% trans "Tags" %}</td>
+          <td>{% trans "Upvotes" %}</td>
+          <td>{% trans "Downvotes" %}</td>
+          <td>{% trans "Options" %}</td>
         </tr>
       </thead>
 
@@ -75,11 +83,17 @@
             <td>{{ article.total_upvotes }}</td>
             <td>{{ article.total_downvotes }}</td>
             <td>
-              <a href="{{ article.get_absolute_url }}" target="_blank">View</a>
+              <a href="{{ article.get_absolute_url }}" target="_blank">
+                {% trans "View" %}
+              </a>
               |
-              <a href="{% url 'knowledgebase:dashboard_article_update' article.pk %}">Update</a>
+              <a href="{% url 'knowledgebase:dashboard_article_update' article.pk %}">
+                {% trans "Update" %}
+              </a>
               |
-              <a href="{% url 'knowledgebase:dashboard_article_delete' article.pk %}">Delete</a>
+              <a href="{% url 'knowledgebase:dashboard_article_delete' article.pk %}">
+                {% trans "Delete" %}
+              </a>
             </td>
           </tr>
         {% endfor %}

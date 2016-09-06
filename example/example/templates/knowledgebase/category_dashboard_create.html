@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}Dashboard - Category - Create{% endblock title %}
+{% block title %}{% trans "Dashboard" %} - {% trans "Category" %} - {% trans "Create" %}{% endblock title %}
 
 {% block content %}
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1 class="text-center">Create Category</h1>
+      <h1 class="text-center">{% trans "Create Category" %}</h1>
 
       <form action="" method="post">
         {% csrf_token %}
         {{ form | crispy  }}
-        <input type="submit" class="btn btn-primary" value="Create" />
+        <input type="submit" class="btn btn-primary" value="{% trans 'Create' %}" />
       </form>
     </div>
   </div>

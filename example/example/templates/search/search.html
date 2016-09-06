@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load crispy_forms_tags %}
 
-{% block title %}Search{% endblock title %}
+{% block title %}{% trans "Search" %}{% endblock title %}
 
 {% block content %}
   <div class="jumbotron text-center">
-    <h1>Search</h1>
+    <h1>{% trans "Search" %}</h1>
   </div>
 
   <form method="get" action=".">
@@ -21,7 +23,7 @@
           {% for result in page.object_list %}
             <a href="{{ result.object.get_absolute_url }}" class="list-group-item">{{ result.object.title }}</a>
             {% empty %}
-            <p class="text-center lead">No results found.</p>
+            <p class="text-center lead">{% trans "No results found." %}</p>
           {% endfor %}
         </div>
       </div>

@@ -1,44 +1,74 @@
+{% load i18n %}
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">{% trans "Toggle navigation" %}</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Knowledgebase</a>
+      <a class="navbar-brand" href="/">{% trans "Knowledgebase" %}</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <a href="/">Home</a>
+          <a href="/">{% trans "Home" %}</a>
         </li>
-        <li><a href="{% url 'knowledgebase:category_list' %}">Categories</a></li>
-        <li><a href="{% url 'knowledgebase:article_list' %}">Articles</a></li>
-        <li><a href="{% url 'knowledgebase:haystack_search' %}">Search</a></li>
-        <li><a href="{% url 'knowledgebase:dashboard_home' %}">Dashboard</a></li>
+        <li>
+          <a href="{% url 'knowledgebase:category_list' %}">
+            {% trans "Categories" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'knowledgebase:article_list' %}">
+            {% trans "Articles" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'knowledgebase:haystack_search' %}">
+            {% trans "Search" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'knowledgebase:dashboard_home' %}">
+            {% trans "Dashboard" %}
+          </a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             {% if user.is_authenticated %}
-              Hello, {{ user.username }}
+              {% trans "Hello" %}, {{ user.username }}
             {% else %}
-              Account
+              {% trans "Account" %}
             {% endif %}
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             {% if not user.is_authenticated %}
-              <li><a href="{% url 'account_login' %}">Login</a></li>
-              <li><a href="{% url 'account_signup' %}">Signup</a></li>
+              <li>
+                <a href="{% url 'account_login' %}">
+                  {% trans "Login" %}
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'account_signup' %}">
+                  {% trans "Signup" %}
+                </a>
+              </li>
             {% endif %}
             {% if user.is_authenticated %}
-              <li><a href="{% url 'account_logout' %}">Logout</a></li>
+              <li>
+                <a href="{% url 'account_logout' %}">
+                  {% trans "Logout" %}
+                </a>
+              </li>
             {% endif %}
           </ul>
         </li>

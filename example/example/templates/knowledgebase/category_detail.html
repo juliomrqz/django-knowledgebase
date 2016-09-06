@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% block content %}
   <article>
     <header class="text-center">
       <h1>{{ category.title }}</h1>
-      <p><strong>Published:</strong> <time pubdate="pubdate">{{ category.modified }}</time></p>
+      <p><strong>{% trans "Published" %}:</strong> <time pubdate="pubdate">{{ category.modified }}</time></p>
     </header>
 
     <section>
