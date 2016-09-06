@@ -54,7 +54,7 @@ setup(
     zip_safe=False,
     keywords='django-knowledgebase',
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Framework :: Django',
         'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
