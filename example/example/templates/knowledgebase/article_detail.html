@@ -45,7 +45,7 @@
           <br>
 
           {% if article.vote_total %}
-            <small>{% blocktrans with upvotes=article.total_upvotes downvotes=article.total_downvotes %}{{ total_upvotes }} out of {{ upvotes|add:downvotes }} found this helpful{% endblocktrans %}</small>
+            <small>{% blocktrans with upvotes=article.total_upvotes totalvotes=article.total_upvotes|add:article.total_downvotes %}{{ upvotes }} out of {{ totalvotes }} found this helpful{% endblocktrans %}</small>
           {% endif %}
         </div>
       </article>
