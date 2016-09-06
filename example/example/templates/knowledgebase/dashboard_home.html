@@ -54,6 +54,8 @@
           <td>Status</td>
           <td>Category</td>
           <td>Tags</td>
+          <td>Upvotes</td>
+          <td>Downvotes</td>
           <td>Options</td>
         </tr>
       </thead>
@@ -70,6 +72,8 @@
                 <span>{{ tag }}</span>
               {% endfor %}
             </td>
+            <td>{{ article.total_upvotes }}</td>
+            <td>{{ article.total_downvotes }}</td>
             <td>
               <a href="{{ article.get_absolute_url }}" target="_blank">View</a>
               |

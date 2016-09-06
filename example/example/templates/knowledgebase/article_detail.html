@@ -3,42 +3,61 @@
 
 {% block content %}
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-7 col-md-offset-1">
       <article>
         <header>
           <h1 class="text-center">{{ article.title }}</h1>
+
+          <ul class="list-inline">
+            <li>
+              <time pubdate="pubdate">{{ article.modified }}</time>
+            </li>
+            <li>
+              <strong>Category:</strong> <a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a>
+            </li>
+            <li>
+              <strong>Views:</strong> {{ hitcount.total_hits }}</a>
+            </li>
+          </ul>
         </header>
         <div class="panel panel-default">
           <div class="panel-body">
             {{ article.content|apply_markup:article.markup }}
           </div>
         </div>
-        <section>
-          <div class="row">
-            <div class="col-md-6">
-              <dl>
-                <dt>Published</dt>
-                <dd><time pubdate="pubdate">{{ article.modified }}</time></dd>
-                <dt>Category</dt>
-                <dd><a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a></dd>
-                <dt>Views</dt>
-                <dd>{{ hitcount.total_hits }}</dd>
-                <dt>Votes</dt>
-                <dd>{{ article.vote_total }}</dd>
-              </dl>
-            </div>
 
-            <div class="col-md-6">
-              <h2 class="h4">Tags</h2>
-              <ul class="list-inline">
-                {% for tag in article.tags.names %}
-                  <li><span class="label label-default">{{ tag }}</span></li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </section>
+        <div class="well" id="voting-box">
+          Was this article helpful?
+          <a id="upvote-link" href="{% url 'knowledgebase:article_upvote' article.slug %}"
+             data-toggle="tooltip"
+             title="Yes">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+          </a>
+          |
+          <a id="downvote-link" href="{% url 'knowledgebase:article_downvote' article.slug %}"
+             data-toggle="tooltip"
+             title="No">
+           <span class="glyphicon glyphicon-thumbs-down"></span>
+          </a>
+
+          <br>
+
+          {% if article.vote_total %}
+            <small>{{ article.total_upvotes }} out of {{ article.total_upvotes|add:article.total_downvotes }} found this helpful</small>
+          {% endif %}
+        </div>
       </article>
+    </div>
+
+    <div class="col-md-3">
+        <div>
+          <h2 class="text-center">Tags</h2>
+          <ul class="list-inline">
+            {% for tag in article.tags.names %}
+              <li><span class="label label-default">{{ tag }}</span></li>
+            {% endfor %}
+          </ul>
+        </div>
     </div>
   </div>
 {% endblock %}
