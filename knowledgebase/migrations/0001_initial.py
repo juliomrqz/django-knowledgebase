@@ -38,9 +38,6 @@ class Migration(migrations.Migration):
                 'verbose_name': 'Article',
                 'verbose_name_plural': 'Articles',
             },
-            managers=[
-                ('_default_manager', django.db.models.manager.Manager()),
-            ],
         ),
         migrations.CreateModel(
             name='Category',
