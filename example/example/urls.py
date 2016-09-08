@@ -21,6 +21,8 @@ import debug_toolbar
 urlpatterns = [
     url(r'^', include('knowledgebase.urls', namespace='knowledgebase')),
 
+    url(r'^search/', include('haystack.urls')),
+
     url(r'^accounts/', include('allauth.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
