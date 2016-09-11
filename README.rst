@@ -26,10 +26,10 @@ Then use it in a project::
 
     import knowledgebase
 
-Features
+Todo
 --------
 
-* TODO
+* Unit tests
 
 Running Tests
 --------------
