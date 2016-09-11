@@ -16,7 +16,5 @@ urlpatterns = patterns(
 
     url(r'^category/', include(category_urls)),
 
-    url(r'^search/', include('haystack.urls')),
-
     url(r'^dashboard/', include(dashboard_urls)),
 )

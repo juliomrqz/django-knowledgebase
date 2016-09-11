@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Dashboard" %} - {% trans "Article" %} - {% trans "Vote" %}{% endblock title %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 panel panel-default">
+
+      <div class="panel-body text-center">
+        <form action="{% if vote == 'upvote' %}{% url 'knowledgebase:article_upvote' article.slug %}{% else %}{% url 'knowledgebase:article_downvote' article.slug %}{% endif %}" method="post">
+          {% csrf_token %}
+          <p>
+          {% if vote == 'upvote' %}
+            {% blocktrans with article=article %}Are you sure you want to upvote this article: "{{ article }}"?{% endblocktrans %}
+          {% else %}
+            {% blocktrans with article=article %}Are you sure you want to downvote this article: "{{ article }}"?{% endblocktrans %}
+          {% endif %}
+          </p>
+          <input type="submit" class="btn btn-primary" value="{% trans 'Confirm' %}" />
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -20,8 +20,15 @@ class DashboardHomeView(LoginRequiredMixin,
 
     def get_context_data(self, **kwargs):
         context = super(DashboardHomeView, self).get_context_data(**kwargs)
-        context['articles_list'] = Article.objects.all()
-        context['categories_list'] = Category.objects.all()
+
+        articles_list = Article.objects.all()
+        articles_list = articles_list.prefetch_related("author")
+        articles_list = articles_list.prefetch_related("category")
+        context['articles_list'] = articles_list
+
+        categories_list = Category.objects.all()
+        categories_list = categories_list.prefetch_related("author")
+        context['categories_list'] = categories_list
 
         return context
 

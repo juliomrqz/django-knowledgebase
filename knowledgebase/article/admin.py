@@ -37,7 +37,7 @@ class ArticleAdmin(VersionAdmin):
             _("%s successfully marked as published.") % message_bit
         )
 
-    make_published.short_description = "Mark selected article(s) as published"
+    make_published.short_description = _("Mark selected article(s) as published")
 
     def make_draft(self, request, queryset):
         rows_updated = queryset.update(status=STATUS.draft)
@@ -53,4 +53,4 @@ class ArticleAdmin(VersionAdmin):
             _("%s successfully marked as draft.") % message_bit
         )
 
-    make_draft.short_description = "Mark selected article(s) as draft"
+    make_draft.short_description = _("Mark selected article(s) as draft")

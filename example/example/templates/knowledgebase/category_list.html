@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Categories{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans "Categories" %}{% endblock title %}
 
 {% block content %}
   <div class="jumbotron text-center">
-    <h1>Categories</h1>
+    <h1>{% trans "Categories" %}</h1>
   </div>
 
   <div class="row">

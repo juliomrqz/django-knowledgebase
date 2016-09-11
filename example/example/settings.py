@@ -62,6 +62,8 @@ INSTALLED_APPS = (
     'pytz',
     'knowledgebase',
     'django_markup',
+    'hitcount',
+    'secretballot',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -73,6 +75,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
+    'secretballot.middleware.SecretBallotIpUseragentMiddleware',
 )
 
 ROOT_URLCONF = 'example.urls'

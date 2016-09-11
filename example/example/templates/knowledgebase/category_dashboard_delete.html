@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard - Category - Delete{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans "Dashboard" %} - {% trans "Category" %} - {% trans "Delete" %}{% endblock title %}
 
 {% block content %}
   <div class="row">
@@ -9,8 +11,8 @@
         <div class="panel-body">
           <form action="" method="post">
             {% csrf_token %}
-            <p>Are you sure you want to delete <strong>"{{ category.title }}"</strong>?</p>
-            <input class="btn btn-danger" type="submit" value="Confirm" />
+            <p>{% blocktrans with title=category.title %}Are you sure you want to delete <strong>"{{ title }}"</strong>?{% endblocktrans %}</p>
+            <input class="btn btn-danger" type="submit" value="{% trans 'Confirm' %}" />
           </form>
         </div>
       </div>

@@ -1,5 +1,8 @@
 import datetime
+
 from haystack import indexes
+
+from ..base.choices import STATUS
 from .models import Article
 
 
@@ -15,5 +18,6 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
         return self.get_model().objects.filter(
-            modified__lte=datetime.datetime.now()
+            modified__lte=datetime.datetime.now(),
+            status=STATUS.published
         )
