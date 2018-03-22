@@ -8,6 +8,8 @@ Django-Knowledgebase
 .. image:: https://travis-ci.org/bazzite/django-knowledgebase.png?branch=master
     :target: https://travis-ci.org/bazzite/django-knowledgebase
 
+This project is Unmaintained. For a full-featured Knowledgebase made with Django and Angular, you can visit https://github.com/bazzite/scrits.
+
 A knowledgebase made with Django
 
 Documentation
